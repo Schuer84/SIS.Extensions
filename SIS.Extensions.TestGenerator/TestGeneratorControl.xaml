@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="SIS.Extensions.TestGenerator.TestGeneratorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:models="clr-namespace:Sgbdnl.Extensions.TestGenerator"
+             xmlns:viewModels="clr-namespace:SIS.Extensions.TestGenerator.ViewModels"
+             xmlns:contracts="clr-namespace:SIS.Extensions.TestGenerator.Contracts"
+             Background="{DynamicResource VsBrush.Window}"
+             Foreground="{DynamicResource VsBrush.WindowText}"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             Name="MyToolWindow">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type viewModels:TestGenerationViewModel}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="9*" />
+                </Grid.RowDefinitions>
+                <StackPanel 
+            Orientation="Horizontal"
+            Grid.Row="0" 
+            Grid.Column="1">
+                    <TextBlock Margin="10" HorizontalAlignment="Center">TestGenerator</TextBlock>
+                    <Button Content="Generate" Command="{Binding GenerateCommand}" />
+                </StackPanel>
+                <TextBox Grid.Row="1" 
+                 Grid.Column="0" 
+                 Grid.ColumnSpan="2" 
+                 Text="{Binding Code }"
+                 ScrollViewer.CanContentScroll="True" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid DataContext="{Binding Container}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="9*" />
+        </Grid.RowDefinitions>
+        <ItemsControl Grid.Row="0" ItemsSource="{Binding Models}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type contracts:IViewModel}">
+                    <Button 
+                        Command="{Binding Select, RelativeSource={RelativeSource TemplatedParent}}" 
+                        CommandParameter="{Binding}"  
+                        Content="{Binding Title}"
+                        />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ContentControl Grid.Row="1" Content="{Binding Model}"></ContentControl>
+    </Grid>
+</UserControl>

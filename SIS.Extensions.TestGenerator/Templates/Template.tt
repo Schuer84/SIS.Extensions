@@ -1,0 +1,88 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="Sgbdnl.Extensions.TestGenerator" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Sgbdnl.Extensions.TestGenerator.Models" #>
+<#@ output extension=".cs" #>
+namespace <#= File.Namespace #>.Tests
+{
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using FakeItEasy;
+	<#= string.Join("\r\n\t", File.Usings
+			.Select(x => string.Format("using {0};", x))
+			.Union(new [] { string.Format("using {0};", File.Namespace) })
+			.OrderBy(x => x))#>
+
+
+<#
+	foreach(var currentClass in File.Classes)
+	{
+		var constructor = currentClass.Constructors
+							   .OrderBy(x => x.Parameters.Count())
+							   .FirstOrDefault();
+
+		var constructorCall = constructor == null 
+								? string.Format("{0}()", currentClass.Name) 
+								: string.Format("{0}({1})", currentClass.Name, string.Join(",", constructor.Parameters.Select(x => x.Name)));
+		
+	#>
+	[TestClass]
+	public class <#= string.Format("{0}Tests", currentClass.Name) #> 
+	{   
+		protected <#= string.Format("{0}", currentClass.Name) #> GetTarget() 
+		{
+			return new <#= constructorCall #>;
+		}
+
+		[TestInitialize]
+		public void Initialize() 
+		{
+			Fake.InitializeFixture(this);
+		}
+<#
+		if(constructor != null) 
+		{
+            foreach (var parameter in constructor.Parameters)
+            {
+#>		
+		[Fake]
+		public <#= string.Format("{0} {1}", parameter.Type, parameter.Name)#> { get; set; }
+<#
+            } 
+		}
+#>
+
+<#
+
+		foreach (var parameter in currentClass.GetMethodVariables())
+        {
+
+#>		protected <#= string.Format("{0} {1}", parameter.Type, parameter.Name)#> { get; set; } 
+<#
+        }
+	
+		if(constructor != null)
+		{
+			foreach(var parameter in constructor.Parameters) 
+			{
+				var parameterName = parameter.Name;
+				var methodName= string.Format("GetTarget_Without{0}_ThrowsException", parameterName);
+#>
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentNullException))]
+		public void <#= methodName #>() 
+		{
+			<#= string.Format("new {0}({1});", currentClass.Name, string.Join(",", constructor.Parameters.Select(x => x == parameter ? "null" : x.Name))) #>
+		}
+<#
+			}
+		}
+#>	}
+<#
+	}
+#>
+}
+
