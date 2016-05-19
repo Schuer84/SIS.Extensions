@@ -1,10 +1,10 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="Sgbdnl.Extensions.TestGenerator" #>
+<#@ assembly name="SIS.Extensions.TestGenerator" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="Sgbdnl.Extensions.TestGenerator.Models" #>
+<#@ import namespace="SIS.Extensions.TestGenerator.Models" #>
 <#@ output extension=".cs" #>
 namespace <#= File.Namespace #>.Tests
 {

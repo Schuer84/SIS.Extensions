@@ -21,7 +21,7 @@ namespace SIS.Extensions.TestGenerator.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+    #line 1 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class Template : TemplateBase
     {
@@ -33,7 +33,7 @@ namespace SIS.Extensions.TestGenerator.Templates
         {
             this.Write("namespace ");
             
-            #line 9 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 9 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(File.Namespace));
             
             #line default
@@ -41,7 +41,7 @@ namespace SIS.Extensions.TestGenerator.Templates
             this.Write(".Tests\r\n{\r\n\tusing Microsoft.VisualStudio.TestTools.UnitTesting;\r\n\tusing FakeItEas" +
                     "y;\r\n\t");
             
-            #line 13 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 13 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join("\r\n\t", File.Usings
 			.Select(x => string.Format("using {0};", x))
 			.Union(new [] { string.Format("using {0};", File.Namespace) })
@@ -51,7 +51,7 @@ namespace SIS.Extensions.TestGenerator.Templates
             #line hidden
             this.Write("\r\n\r\n\r\n");
             
-            #line 19 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 19 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
 
 	foreach(var currentClass in File.Classes)
 	{
@@ -69,21 +69,21 @@ namespace SIS.Extensions.TestGenerator.Templates
             #line hidden
             this.Write("\t[TestClass]\r\n\tpublic class ");
             
-            #line 32 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 32 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{0}Tests", currentClass.Name)));
             
             #line default
             #line hidden
             this.Write(" \r\n\t{   \r\n\t\tprotected ");
             
-            #line 34 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 34 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{0}", currentClass.Name)));
             
             #line default
             #line hidden
             this.Write(" GetTarget() \r\n\t\t{\r\n\t\t\treturn new ");
             
-            #line 36 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 36 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(constructorCall));
             
             #line default
@@ -91,7 +91,7 @@ namespace SIS.Extensions.TestGenerator.Templates
             this.Write(";\r\n\t\t}\r\n\r\n\t\t[TestInitialize]\r\n\t\tpublic void Initialize() \r\n\t\t{\r\n\t\t\tFake.Initializ" +
                     "eFixture(this);\r\n\t\t}\r\n");
             
-            #line 44 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 44 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
 
 		if(constructor != null) 
 		{
@@ -103,14 +103,14 @@ namespace SIS.Extensions.TestGenerator.Templates
             #line hidden
             this.Write("\t\t\r\n\t\t[Fake]\r\n\t\tpublic ");
             
-            #line 51 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 51 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{0} {1}", parameter.Type, parameter.Name)));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 52 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 52 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
 
             } 
 		}
@@ -120,7 +120,7 @@ namespace SIS.Extensions.TestGenerator.Templates
             #line hidden
             this.Write("\r\n");
             
-            #line 57 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 57 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
 
 
 		foreach (var parameter in currentClass.GetMethodVariables())
@@ -132,14 +132,14 @@ namespace SIS.Extensions.TestGenerator.Templates
             #line hidden
             this.Write("\t\tprotected ");
             
-            #line 62 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 62 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{0} {1}", parameter.Type, parameter.Name)));
             
             #line default
             #line hidden
             this.Write(" { get; set; } \r\n");
             
-            #line 63 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 63 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
 
         }
 	
@@ -156,21 +156,21 @@ namespace SIS.Extensions.TestGenerator.Templates
             this.Write("\r\n\t\t[TestMethod]\r\n\t\t[ExpectedException(typeof(ArgumentNullException))]\r\n\t\tpublic " +
                     "void ");
             
-            #line 76 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 76 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(methodName));
             
             #line default
             #line hidden
             this.Write("() \r\n\t\t{\r\n\t\t\t");
             
-            #line 78 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 78 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("new {0}({1});", currentClass.Name, string.Join(",", constructor.Parameters.Select(x => x == parameter ? "null" : x.Name)))));
             
             #line default
             #line hidden
             this.Write("\r\n\t\t}\r\n");
             
-            #line 80 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 80 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
 
 			}
 		}
@@ -180,7 +180,7 @@ namespace SIS.Extensions.TestGenerator.Templates
             #line hidden
             this.Write("\t}\r\n");
             
-            #line 84 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Sgbdnl.Extensions.TestGenerator\Templates\Template.tt"
+            #line 84 "C:\Users\Peter\Documents\Visual Studio 2015\Projects\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\SIS.Extensions.TestGenerator\Templates\Template.tt"
 
 	}
 

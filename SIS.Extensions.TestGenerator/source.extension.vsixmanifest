@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Sgbdnl.Extensions.TestGenerator.Peter Schuermans.c23046f7-0216-4e03-9d74-de730d24dac9" Version="1.0" Language="en-US" Publisher="Peter Schuermans" />
-    <DisplayName>Sgbdnl.Extensions.TestGenerator</DisplayName>
+    <Identity Id="SIS.Extensions.TestGenerator.Peter Schuermans.c23046f7-0216-4e03-9d74-de730d24dac9" Version="1.0" Language="en-US" Publisher="Peter Schuermans" />
+    <DisplayName>SIS.Extensions.TestGenerator</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>
   <Installation>
