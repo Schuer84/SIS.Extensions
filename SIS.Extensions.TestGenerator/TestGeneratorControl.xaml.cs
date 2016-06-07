@@ -23,8 +23,8 @@ namespace SIS.Extensions.TestGenerator
         /// </summary>
         public TestGeneratorControl(DTE currentDte)
         {
-            var manager = new VisualStudioManager(currentDte, new FileTransformer());
-            var vm = new TestGenerationViewModel(manager, new Template());
+            var manager = new VisualStudioManager(currentDte, new FileTransformer(), new FileTemplateProvider());
+            var vm = new TestGenerationViewModel(manager);
 
             Container = new ContainerViewModel(vm);
             this.InitializeComponent();

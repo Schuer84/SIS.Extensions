@@ -53,6 +53,8 @@
     <Compile Include="Commands\AsyncCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Contracts\IVisualStudioManager.cs" />
+    <Compile Include="Managers\FileTemplateProvider.cs" />
+    <Compile Include="Managers\IFileTemplateProvider.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="ViewModels\ContainerViewModel.cs" />
@@ -87,7 +89,6 @@
     <Compile Include="Transformers\ModifiersTransformer.cs" />
     <Compile Include="Transformers\ObjectCreationTransformer.cs" />
     <Compile Include="Transformers\ParameterTransformer.cs" />
-    <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\Property.cs" />
     <Compile Include="Transformers\PropertyTransformer.cs" />
     <Compile Include="Transformers\TypeSyntaxTransformer.cs" />

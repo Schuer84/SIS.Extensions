@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using EnvDTE;
 using SIS.Extensions.TestGenerator.Contracts;
 
@@ -6,26 +7,31 @@ namespace SIS.Extensions.TestGenerator.Managers
 {
     public class VisualStudioManager : IVisualStudioManager
     {
+        private readonly IFileTemplateProvider _fileTemplateProvider;
         private readonly ITransform<string, IFile> _fileTransformer;
         private readonly DTE _dte;
 
-        public VisualStudioManager(DTE dte, ITransform<string, IFile> fileTransformer)
+        public VisualStudioManager(DTE dte, ITransform<string, IFile> fileTransformer, IFileTemplateProvider fileTemplateProvider)
         {
             _dte = dte;
             _fileTransformer = fileTransformer;
+            _fileTemplateProvider = fileTemplateProvider;
+
+            
         }
 
-        public string GenerateUnitTest(IFileTemplate template)
+        public string GenerateUnitTest()
         {
-            if(template == null)
-            {
-                throw new ArgumentNullException();
-            }
+            var content = GetFileContent();
+            if (string.IsNullOrEmpty(content)) return content;
+            
+            var file = _fileTransformer.Transform(content);
+            if (file == null) return null;
 
-            var file = template.File = _fileTransformer.Transform(GetFileContent());
-            return file == null 
-                ? string.Empty 
-                : template.TransformText();
+            return _fileTemplateProvider
+                            .GetFileTemplate(file)
+                            .TransformText();
+
         }
 
         private string GetFileContent()

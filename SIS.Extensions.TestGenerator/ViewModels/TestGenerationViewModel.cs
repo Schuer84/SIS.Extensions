@@ -1,7 +1,9 @@
 using System;
+using System.Windows;
 using System.Windows.Input;
 using SIS.Extensions.TestGenerator.Commands;
 using SIS.Extensions.TestGenerator.Contracts;
+using SIS.Extensions.TestGenerator.Managers;
 
 namespace SIS.Extensions.TestGenerator.ViewModels
 {
@@ -9,16 +11,22 @@ namespace SIS.Extensions.TestGenerator.ViewModels
     {
         private string _code;
         private readonly IVisualStudioManager _manager;
-        private readonly IFileTemplate _fileTemplate;
+        private bool _copyToClipboard = true;
 
-        public TestGenerationViewModel(IVisualStudioManager manager, IFileTemplate fileTemplate) : base("Generator")
+
+        public TestGenerationViewModel(IVisualStudioManager manager) : base("Generator")
         {
             if (manager == null) throw new ArgumentNullException(nameof(manager));
-            if (fileTemplate == null) throw new ArgumentNullException(nameof(fileTemplate));
 
             _manager = manager;
-            _fileTemplate = fileTemplate;
             GenerateCommand = new Command(Generate);
+            CopyCommand = new Command(Copy);
+        }
+
+        public bool CopyToClipboard
+        {
+            get { return _copyToClipboard; }
+            set { _copyToClipboard = value; NotifyPropertyChanged(this, x => x.CopyToClipboard); }
         }
 
         public string Code
@@ -28,10 +36,20 @@ namespace SIS.Extensions.TestGenerator.ViewModels
         }
 
         public ICommand GenerateCommand { get; }
+        public ICommand CopyCommand { get; }
 
+        public void Copy(object obj)
+        {
+            Clipboard.SetText(Code);
+        }
         public void Generate(object obj)
         {
-            Code = _manager.GenerateUnitTest(_fileTemplate);
+            Code = _manager.GenerateUnitTest();
+
+            if (CopyToClipboard)
+            {
+                Copy(Code);
+            }
         }
     }
 }

@@ -17,19 +17,20 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="9*" />
                 </Grid.RowDefinitions>
-                <StackPanel 
-            Orientation="Horizontal"
-            Grid.Row="0" 
-            Grid.Column="1">
-                    <TextBlock Margin="10" HorizontalAlignment="Center">TestGenerator</TextBlock>
-                    <Button Content="Generate" Command="{Binding GenerateCommand}" />
-                </StackPanel>
+           
+                    <Button Grid.Row="0" 
+                            Grid.Column="0"
+                            HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Content="Generate" 
+                            Command="{Binding GenerateCommand}" />
                 <TextBox Grid.Row="1" 
                  Grid.Column="0" 
                  Grid.ColumnSpan="2" 
@@ -39,21 +40,12 @@
         </DataTemplate>
     </UserControl.Resources>
     <Grid DataContext="{Binding Container}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="9*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ItemsControl Grid.Row="0" ItemsSource="{Binding Models}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type contracts:IViewModel}">
-                    <Button 
-                        Command="{Binding Select, RelativeSource={RelativeSource TemplatedParent}}" 
-                        CommandParameter="{Binding}"  
-                        Content="{Binding Title}"
-                        />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <ContentControl Grid.Row="1" Content="{Binding Model}"></ContentControl>
+        <ContentControl Grid.Row="0" Grid.Column="0" Content="{Binding Model}"></ContentControl>
     </Grid>
 </UserControl>
